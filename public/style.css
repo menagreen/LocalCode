@@ -1,0 +1,260 @@
+:root {
+  --bg-dark: #1e1e2e;
+  --bg-darker: #181825;
+  --bg-card: #282a36;
+  --text-main: #f8f8f2;
+  --text-muted: #9399b2;
+  --accent-purple: #bd93f9;
+  --accent-green: #50fa7b;
+  --accent-cyan: #8be9fd;
+  --accent-red: #ff5555;
+  --accent-orange: #ffb86c;
+  --border: #44475a;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-darker);
+  color: var(--text-main);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: var(--bg-dark);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 1.4rem;
+}
+
+.brand h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.status-badge.connected .status-dot {
+  background-color: var(--accent-green);
+  box-shadow: 0 0 8px rgba(80, 250, 123, 0.6);
+}
+
+.status-badge.disconnected .status-dot {
+  background-color: var(--accent-red);
+  box-shadow: 0 0 8px rgba(255, 85, 85, 0.6);
+}
+
+.clients-badge {
+  background: rgba(189, 147, 249, 0.15);
+  color: var(--accent-purple);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid rgba(189, 147, 249, 0.3);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tool-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-group label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+select {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+select:focus {
+  border-color: var(--accent-purple);
+}
+
+.stats-group {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+.btn-secondary {
+  background-color: #3b3e52;
+  color: #dcdfe7;
+}
+
+.btn-secondary:hover {
+  background-color: #4b4f68;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #4a5a8a;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #5c6ea4;
+}
+
+.btn-success {
+  background-color: #2b7a4b;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #369b5f;
+}
+
+.btn-success.copied {
+  background-color: #50fa7b !important;
+  color: #1e1e2e !important;
+}
+
+.editor-container {
+  flex: 1;
+  width: 100%;
+  height: calc(100% - 60px);
+  position: relative;
+  background-color: #282a36;
+}
+
+/* CodeMirror overrides */
+.CodeMirror {
+  height: 100% !important;
+  font-family: var(--font-mono) !important;
+  font-size: 14.5px !important;
+  line-height: 1.55 !important;
+  background-color: #282a36 !important;
+}
+
+.CodeMirror-gutters {
+  background-color: #21222c !important;
+  border-right: 1px solid #44475a !important;
+}
+
+.CodeMirror-linenumber {
+  color: #6272a4 !important;
+  padding: 0 8px 0 5px;
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid #f8f8f2 !important;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #44475a;
+  color: #f8f8f2;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+  border-left: 4px solid var(--accent-purple);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  border-left-color: var(--accent-green);
+}
+
+.toast.error {
+  border-left-color: var(--accent-red);
+}
